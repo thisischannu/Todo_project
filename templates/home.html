@@ -1,0 +1,30 @@
+<H1>WELCOME TO TODOAPP</H1>
+
+
+<!-- <ul>
+	<li>first one</li>
+
+	<li>second one here</li>
+</ul> -->
+
+<ul>
+	{% for todo_item in all_todo_items %}
+
+	 <li>{{ todo_item.content }}</li>
+	 <form action="/deletetodo/{{todo_item.id}}" 
+	 style="display: inline;" 
+	 method="post">{% csrf_token %}
+	
+	<input type="submit" value="Delete"/>
+ 
+</form>
+	
+	  {% endfor %}
+
+</ul>
+
+<form action="/addtodo/" method="post">{% csrf_token %}
+	<input type="text" name="content"/>
+	<input type="submit" value="addtodo"/>
+
+</form>
